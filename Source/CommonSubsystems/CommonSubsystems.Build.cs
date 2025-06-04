@@ -13,15 +13,25 @@ public class CommonSubsystems : ModuleRules
 			{
 				"Core",
 			}
-			);
-
+		);
 
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"CoreUObject",
 				"Engine",
+				"EngineSettings",
 			}
+		);
+
+		if (Target.Type == TargetType.Editor)
+		{
+			PrivateDependencyModuleNames.AddRange(
+				new string[]
+				{
+					"UnrealEd",
+				}
 			);
+		}
 	}
 }
