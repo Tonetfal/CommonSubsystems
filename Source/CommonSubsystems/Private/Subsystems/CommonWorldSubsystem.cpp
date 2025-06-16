@@ -1,12 +1,15 @@
-﻿// Author: Antonio Sidenko (Tonetfal), July 2023
+// Author: Antonio Sidenko (Tonetfal), July 2023
 
 #include "Subsystems/CommonWorldSubsystem.h"
 
-#include "Editor.h"
-#include "Editor/EditorEngine.h"
 #include "Engine/NetDriver.h"
 #include "GameMapsSettings.h"
 #include "LogCategories.h"
+
+#if WITH_EDITOR
+#include "Editor.h"
+#include "Editor/EditorEngine.h"
+#endif
 
 DEFINE_LOG_CATEGORY(LogCommonSubsystems);
 
@@ -259,7 +262,9 @@ void UCommonWorldSubsystem::PostInitWorldInternal(UWorld* NewWorld)
 	}
 }
 
+#if WITH_EDITOR
 void UCommonWorldSubsystem::PostInitPieWorldInternal(bool bSimulating)
 {
 	PostInitWorldInternal(GetWorld());
 }
+#endif
